@@ -11,7 +11,7 @@ private:
 	//från basklassen.
 	
 public:
-	Weapon(std::string name, std::string description, char visual);
+	Weapon(std::string name, std::string description, char visual = '/');
 	~Weapon();
 
 	int getDamage()const;
