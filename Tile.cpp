@@ -1,7 +1,6 @@
 #include "Tile.h"
 
-
-Tile::Tile()
+void Tile::randomItemGenerator()
 {
 	srand(time(NULL));
 	unsigned int randomValue = rand() % 100 + 1;
@@ -11,43 +10,53 @@ Tile::Tile()
 	}
 	else
 	{
-		this->visual = '.';
+		this->contain = Air("Air", "This is air");
 	}
 }
 
-Tile::Tile(Item contain, char visual)
+Tile::Tile()
 {
-	this->contain = contain;
-	this->visual = visual;
+	
 }
 
-//Tile::Tile(const Tile & origObj)
-//{
-//	this->visual = origObj.visual;
-//}
+Tile::Tile(bool containsWall)
+{
+
+	if (containsWall == true)
+	{
+		this->contain = Wall("Wall","This is a wall made of rock.");
+	}
+	else
+	{
+		this->randomItemGenerator();
+	}
+}
+
+
 
 Tile::~Tile()
 {
 
 }
 
-//void Tile::operator=(const Tile & origObj)
-//{
-//}
-
-
-
 Item & Tile::takeItem()
 {
-	return *Item; //WHATHTEHFUCK
-	this->visual = '.';
+	return this->contain; //WHATHTEHFUCK
 }
 
 bool Tile::checkPos() const
 {
 	bool check = false;
 
-	if()
+	if (!this->contain.getName == "Wall")
+	{
+		check = true;
+	}
 
 	return check;
+}
+
+char Tile::getVisual() const
+{
+	return this->contain.getVisual();
 }

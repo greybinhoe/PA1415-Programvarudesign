@@ -5,20 +5,25 @@
 //#include "map.h"
 #include "item.h"
 #include "Weapon.h"
+#include "Air.h"
+#include "Wall.h"
 
 class Tile
 {
 private:
 	Item contain;
 	char visual;
+	void randomItemGenerator();
+
 public:
 	Tile();
-	Tile(Item contain, char visual);
-	//Tile(const Tile &origObj);
+	Tile(bool containsWall);
 	virtual ~Tile();
-	//void operator=(const Tile &origObj);
 
 	Item& takeItem();
 	bool checkPos()const;
+	char getVisual()const;
+	//tostring som returnerar visual
+
 };
 #endif // !TILE_H

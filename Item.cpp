@@ -49,3 +49,8 @@ void Item::setDescription(const std::string description)
 	this->description = description;
 }
 
+char Item::getVisual() const
+{
+	return this->visual;
+}
+
