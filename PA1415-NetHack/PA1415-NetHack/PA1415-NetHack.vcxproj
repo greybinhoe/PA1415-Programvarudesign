@@ -18,6 +18,30 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Air.h" />
+    <ClInclude Include="Character.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="Map.h" />
+    <ClInclude Include="Model.h" />
+    <ClInclude Include="Point.h" />
+    <ClInclude Include="Tile.h" />
+    <ClInclude Include="Wall.h" />
+    <ClInclude Include="Weapon.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Air.cpp" />
+    <ClCompile Include="Character.cpp" />
+    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="mainidé.cpp" />
+    <ClCompile Include="maintest.cpp" />
+    <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Model.cpp" />
+    <ClCompile Include="testmain.cpp" />
+    <ClCompile Include="Tile.cpp" />
+    <ClCompile Include="Wall.cpp" />
+    <ClCompile Include="Weapon.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{16492A23-A9F1-41D1-980F-4E048FF4EFD4}</ProjectGuid>
@@ -110,28 +134,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\Air.h" />
-    <ClInclude Include="..\..\Character.h" />
-    <ClInclude Include="..\..\Item.h" />
-    <ClInclude Include="..\..\Map.h" />
-    <ClInclude Include="..\..\Point.h" />
-    <ClInclude Include="..\..\Tile.h" />
-    <ClInclude Include="..\..\Wall.h" />
-    <ClInclude Include="..\..\Weapon.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\Air.cpp" />
-    <ClCompile Include="..\..\Character.cpp" />
-    <ClCompile Include="..\..\Item.cpp" />
-    <ClCompile Include="..\..\mainidé.cpp" />
-    <ClCompile Include="..\..\maintest.cpp" />
-    <ClCompile Include="..\..\Map.cpp" />
-    <ClCompile Include="..\..\testmain.cpp" />
-    <ClCompile Include="..\..\Tile.cpp" />
-    <ClCompile Include="..\..\Wall.cpp" />
-    <ClCompile Include="..\..\Weapon.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
