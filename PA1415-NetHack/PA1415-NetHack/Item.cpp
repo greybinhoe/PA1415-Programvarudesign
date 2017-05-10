@@ -16,7 +16,6 @@ Item::Item(std::string name, std::string description, char visual)
 
 Item::~Item()
 {
-	
 }
 
 std::string Item::getName() const
@@ -48,9 +47,3 @@ void Item::setDescription(const std::string description)
 {
 	this->description = description;
 }
-
-char Item::getVisual() const
-{
-	return this->visual;
-}
-

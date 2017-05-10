@@ -1,3 +1,6 @@
+#ifndef POINT_H
+#define POINT_H
+
 #include <iostream>
 #include <math.h>
 
@@ -10,7 +13,7 @@ private:
 public:
         // Constructor uses default arguments to allow calling with zero, one,
         // or two values.
-        Point(int x = 0.0, int y = 0.0) {
+        Point(int x = 0, int y = 0) {
                 xval = x;
                 yval = y;
         }
@@ -23,7 +26,7 @@ public:
         int dist(Point other) {
                 int xd = xval - other.xval;
                 int yd = yval - other.yval;
-                return sqrt(xd*xd + yd*yd);
+                return (int)sqrt(xd*xd + yd*yd);
         }
 
         // Add or subtract two points.
@@ -49,7 +52,6 @@ public:
         {
                 strm << "(" << xval << "," << yval << ")";
         }
-};
 
 // Print a line of the form x op y = z, where x, y, and z are points. 
 void prline(ostream &strm, Point x, char *op, Point y, Point z)
@@ -61,3 +63,5 @@ void prline(ostream &strm, Point x, char *op, Point y, Point z)
         z.print(strm);
         cout << endl;
 }
+};
+#endif // !POINT_H

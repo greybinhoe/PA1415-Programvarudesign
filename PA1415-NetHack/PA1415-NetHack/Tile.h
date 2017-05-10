@@ -1,9 +1,8 @@
 #ifndef TILE_H
 #define TILE_H
-#include <time.h>
 
+#include <time.h>
 //#include "map.h"
-#include "item.h"
 #include "Weapon.h"
 #include "Air.h"
 #include "Wall.h"
@@ -11,7 +10,7 @@
 class Tile
 {
 private:
-	Item contain;
+	Item * contain;
 	char visual;
 	void randomItemGenerator();
 
@@ -20,10 +19,9 @@ public:
 	Tile(bool containsWall);
 	virtual ~Tile();
 
-	Item& takeItem();
+	Item * takeItem();
 	bool checkPos()const;
 	char getVisual()const;
 	//tostring som returnerar visual
-
 };
 #endif // !TILE_H

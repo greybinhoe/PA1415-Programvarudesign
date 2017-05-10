@@ -1,6 +1,8 @@
-Character()
+#include "Character.h"
+
+Character::Character()
 {
-	this->position(0,0);
+	this->position = (50,50);
 	this->name = "";
 	this->strength = 0;
 	this->agility = 0;
@@ -9,7 +11,7 @@ Character()
 	this->health = this->vitality*2+this->strength /2 + 1;
 	this->currentHealth = this->health;
 }
-Character(Point position, std::string name, int strenght,int agility, int intelligence,int vitality)
+Character::Character(Point position, std::string name, int strenght,int agility, int intelligence,int vitality)
 {
 	this->position = position;
 	this->name = name;
@@ -20,61 +22,67 @@ Character(Point position, std::string name, int strenght,int agility, int intell
 	this->health = this->vitality*2 + this->strength / 2 + 1 ;
 	this->currentHealth = this->health;
 }
-Point getPosition()
+
+Point Character::getPosition()
 {
 	return this->position;
 }
-char getVisual()
+char Character::getVisual()
 {
 	return this->visual;
 }
-std::string getName()
+std::string Character::getName()
 {
 	return this->name;
 }
-int getStrenght()
+int Character::getStrenght()
 {
 	return this->strength;
 }
-int getAgility()
+int Character::getAgility()
 {
-		return this->agility;
+	return this->agility;
 }
-int getIntelligence()
+int Character::getIntelligence()
 {
 	return this->intelligence;
 }
-int getVitality()
+int Character::getVitality()
 {
 	return this->vitality;
 }
-int getHealth()
+int Character::getHealth()
 {
 	return this->health;
 }
-int getCurrentHealth()
+int Character::getCurrentHealth()
 {
 	return this->currentHealth;
 }
-void setPosition(Point newPos)
+
+void Character::setPosition(Point newPos)
 {
 	this->position = newPos;
 }
-void setStrength(int strength)
+void Character::setStrength(int strength)
 {
 	this->strength = strength;
 	this->health = this->vitality * 2 + this->strength / 2 + 1;
 }
-void setAgility(int agility)
+void Character::setAgility(int agility)
 {
-	this->agility = agility
+	this->agility = agility;
 }
-void setVitality(int vitality)
+void Character::setVitality(int vitality)
 {
 	this->vitality = vitality;
 	this->health = this->vitality * 2 + this->strength / 2 + 1;
 }
-void setIntelligence(int intelligence)
+void Character::setIntelligence(int intelligence)
 {
 	this->intelligence = intelligence;
+}
+void Character::setItem(Item tileItem)
+{
+	this->inventory[0] = tileItem;
 }

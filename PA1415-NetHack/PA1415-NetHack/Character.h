@@ -3,13 +3,14 @@
 #include <math.h>
 #include <string.h>
 #include "Point.h"
-
+#include "Item.h"
 
 class Character
 {
 	private:
 		char visual = '@';
 		Point position;
+		Item inventory[1];
 		std::string name;
 		int strength;
 		int agility;
@@ -34,6 +35,7 @@ class Character
 		void setAgility(int agility);
 		void setIntelligence(int intelligence);
 		void setVitality(int vitality);
+		void setItem(Item tileItem);
 
 };
 

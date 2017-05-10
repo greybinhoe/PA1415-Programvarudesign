@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\assignment",
+    "\\PA1415-NetHack",
+    "\\PA1415-NetHack\\PA1415-NetHack"
   ],
-  "SelectedNode": "\\PA1415-NetHack",
+  "SelectedNode": "\\PA1415-NetHack\\PA1415-NetHack\\PA1415-NetHack.vcxproj",
   "PreviewInSolutionExplorer": false
 }

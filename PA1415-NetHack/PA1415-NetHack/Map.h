@@ -19,7 +19,7 @@ public:
 	Item& pickUpItem(Point point);
 	bool checkPos(Point point);
 
-	string toString() const;
+	string toString();
 };
 
 #endif

@@ -21,6 +21,5 @@ public:
 	void setName(const std::string name);
 	void setVisual(const char visual);
 	void setDescription(const std::string description);
-	char getVisual()const;
 };
 #endif // !ITEM_H

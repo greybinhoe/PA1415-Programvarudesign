@@ -1,12 +1,13 @@
 #ifndef WEAPON_H
 #define WEAPON_H
+
 #include "Item.h"
 
 class Weapon : public Item //Subklass
 {
 private:
 	int damage;
-	//name 
+	//name
 	//description
 	//från basklassen.
 

@@ -1,7 +1,7 @@
 #include "Weapon.h"
 
 Weapon::Weapon(std::string name, std::string description, char visual)
-	:Item(name,description,visual = '/')
+	:Item(name, description, visual = '/')
 {
 	this->damage = 0;
 }
@@ -20,6 +20,3 @@ void Weapon::setDamage(const int damage)
 {
 	this->damage = damage;
 }
-
-
-

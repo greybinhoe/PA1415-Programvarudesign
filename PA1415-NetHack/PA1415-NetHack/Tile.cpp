@@ -2,29 +2,27 @@
 
 void Tile::randomItemGenerator()
 {
-	srand(time(NULL));
+	srand((int)time(NULL));
 	unsigned int randomValue = rand() % 100 + 1;
 	if (randomValue <= 5)
 	{
-		this->contain = Weapon("Name: Unknown", "Description: Unknown", '/');
+		this->contain = new Weapon("Name: Unknown", "Description: Unknown", '/');
 	}
 	else
 	{
-		this->contain = Air("Air", "This is air");
+		this->contain = new Air("Air", "This is air");
 	}
 }
 
 Tile::Tile()
 {
-	
 }
 
 Tile::Tile(bool containsWall)
 {
-
 	if (containsWall == true)
 	{
-		this->contain = Wall("Wall","This is a wall made of rock.");
+		this->contain = new Wall("Wall", "This is a wall made of rock.");
 	}
 	else
 	{
@@ -32,23 +30,20 @@ Tile::Tile(bool containsWall)
 	}
 }
 
-
-
 Tile::~Tile()
 {
-
 }
 
-Item & Tile::takeItem()
+Item * Tile::takeItem()
 {
-	return this->contain; //WHATHTEHFUCK
+	return this->contain;
 }
 
 bool Tile::checkPos() const
 {
 	bool check = false;
 
-	if (!this->contain.getName == "Wall")
+	if (this->contain->getName() != "Wall")
 	{
 		check = true;
 	}
@@ -58,5 +53,5 @@ bool Tile::checkPos() const
 
 char Tile::getVisual() const
 {
-	return this->contain.getVisual();
+	return this->contain->getVisual();
 }
