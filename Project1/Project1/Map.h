@@ -21,7 +21,7 @@ public:
 	bool checkPos(Point point);
 
 	//string toString() const;
-	void toCharArray(char * charArray, int row);
+	void rowToCharArray(char * charArray, int row);
 	int getRows() const;
 	int getCols() const;
 };

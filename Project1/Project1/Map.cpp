@@ -62,12 +62,12 @@ bool Map::checkPos(Point point)
 	return mapVisual;
 }*/
 
-void Map::toCharArray(char * charArray, int row)
+void Map::rowToCharArray(char * charArray, int row)
 {
 	for (int j = 0; j < this->sizeX; j++)
 	{
-		charArray[j] += this->tileMap[j][row].getVisual();
-		charArray[j + 1] = '\0';
+		charArray[j] = this->tileMap[j][row].getVisual();
+		//charArray[j + 1] = '\0';
 	}
 }
 

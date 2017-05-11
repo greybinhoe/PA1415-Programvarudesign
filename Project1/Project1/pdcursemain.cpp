@@ -25,10 +25,10 @@ void erase(int y, int x)
 
 void drawMap(Map map)
 {
-	char bigCHARRAY[1024][1024];
+	char bigCHARRAY[124][124];
 	for (int i = 0; i < map.getRows(); i++)
 	{
-		map.toCharArray(bigCHARRAY[map.getRows()], map.getRows());
+		map.rowToCharArray(bigCHARRAY[i], i);
 	}
 	for (int i = 0; i < map.getRows(); i++)
 	{
@@ -44,7 +44,7 @@ void gameLoop(Character player, Map map, int ch)
 		{
 			return;	
 		}
-		mvaddstr(0, 0, "HAHAHA");
+		drawMap(map);
 		mvaddch(player.getRow(), player.getCol(), player.getVisual());
 		refresh();
 
