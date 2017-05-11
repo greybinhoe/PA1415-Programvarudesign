@@ -2,30 +2,36 @@
 
 Character::Character()
 {
-	this->position = (50,50);
+	this->col = 10;
+	this->row = 10;
 	this->name = "";
 	this->strength = 0;
 	this->agility = 0;
 	this->intelligence = 0;
 	this->vitality = 0;
-	this->health = this->vitality*2+this->strength /2 + 1;
+	this->health = this->vitality * 2 + this->strength / 2 + 1;
 	this->currentHealth = this->health;
 }
-Character::Character(Point position, std::string name, int strenght,int agility, int intelligence,int vitality)
+Character::Character(int posX, int posY, std::string name, int strenght, int agility, int intelligence, int vitality)
 {
-	this->position = position;
+	this->col = posX;
+	this->row = posY;
 	this->name = name;
 	this->strength = strength;
 	this->agility = agility;
 	this->intelligence = intelligence;
 	this->vitality = vitality;
-	this->health = this->vitality*2 + this->strength / 2 + 1 ;
+	this->health = this->vitality * 2 + this->strength / 2 + 1;
 	this->currentHealth = this->health;
 }
 
-Point Character::getPosition()
+int Character::getCol()
 {
-	return this->position;
+	return this->col;
+}
+int Character::getRow()
+{
+	return this->row;
 }
 char Character::getVisual()
 {
@@ -60,9 +66,13 @@ int Character::getCurrentHealth()
 	return this->currentHealth;
 }
 
-void Character::setPosition(Point newPos)
+void Character::setCol(int newCol)
 {
-	this->position = newPos;
+	this->col = newCol;
+}
+void Character::setRow(int newRow)
+{
+	this->row = newRow;
 }
 void Character::setStrength(int strength)
 {

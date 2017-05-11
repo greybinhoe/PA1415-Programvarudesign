@@ -12,7 +12,7 @@ private:
 public:
 	Item();
 	Item(std::string name, std::string description, char visual);
-	~Item();
+	virtual ~Item();
 
 	std::string getName()const;
 	char getVisual()const;

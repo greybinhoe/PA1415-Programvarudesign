@@ -1,22 +1,21 @@
 #include "Map.h"
 
-Map::Map() : size(100, 100)
+Map::Map()
 {
-	this->tileMap = new Tile[100][100];
 	//Generate tiles
-	for (int i = 0; i < this->size.x(); i++)
+	for (int i = 0; i < this->sizeX; i++)
 	{
-		for (int j = 0; j < this->size.y(); j++)
+		for (int j = 0; j < this->sizeY; j++)
 		{
 			//If the tile is a wall tile
-			if (i == 0 || j == 0 || i == 99 || j == 99)
+			if (i == 0 || j == 0 || i == this->sizeX-1 || j == this->sizeY-1)
 			{
-				this->tileMap[i][j] = new Tile(true);
+				this->tileMap[i][j] = Tile(true);
 			}
 			//If the tile is a floor tile
 			else
 			{
-				this->tileMap[i][j] = new Tile(false);
+				this->tileMap[i][j] = Tile(false);
 			}
 		}
 	}
@@ -25,39 +24,59 @@ Map::Map() : size(100, 100)
 Map::~Map()
 {
 	//Delete tiles
-	for (int i = 0; i <= this->size.x(); i++)
+	for (int i = 0; i < this->sizeX; i++)
 	{
-		for (int j = 0; j <= this->size.y(); j++)
+		for (int j = 0; j < this->sizeY; j++)
 		{
-			delete &this->tileMap[i][j];
+			//delete this->tileMap[i];
 		}
+		//delete this->tileMap;
 	}
 }
 
 Item& Map::pickUpItem(Point point)
 {
 	//Return the adress of the item on "point"
-	return *this->tileMap[point.x()][point.y()].takeItem();
+	return *this->tileMap[sizeX][sizeY].takeItem();
 }
 
 bool Map::checkPos(Point point)
 {
 	//If the tile "point" is empty, return true
-	return (this->tileMap[point.x()][point.y()].checkPos());
+	return (this->tileMap[sizeX][sizeY].checkPos());
 }
 
-string Map::toString()
+/*string Map::toString() const
 {
 	string mapVisual = "";
 
 	//Get Visual for every tile
-	for (int i = 0; i <= this->size.x(); i++)
+	for (int i = 0; i < this->sizeY; i++)
 	{
-		for (int j = 0; j <= this->size.y(); j++)
+		for (int j = 0; j < this->sizeX; j++)
 		{
-			mapVisual += this->tileMap[i][j].getVisual();
+			mapVisual += this->tileMap[j][i].getVisual();
 		}
 		mapVisual += "\n";
 	}
 	return mapVisual;
+}*/
+
+void Map::toCharArray(char * charArray, int row)
+{
+	for (int j = 0; j < this->sizeX; j++)
+	{
+		charArray[j] += this->tileMap[j][row].getVisual();
+		charArray[j + 1] = '\0';
+	}
+}
+
+int Map::getRows() const
+{
+	return this->sizeY;
+}
+
+int Map::getCols() const
+{
+	return this->sizeX;
 }

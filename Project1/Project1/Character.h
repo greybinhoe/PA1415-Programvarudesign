@@ -9,7 +9,8 @@ class Character
 {
 	private:
 		char visual = '@';
-		Point position;
+		int row;
+		int col;
 		Item inventory[1];
 		std::string name;
 		int strength;
@@ -20,8 +21,9 @@ class Character
 		int currentHealth;
 	public:
 		Character();
-		Character(Point position, std::string name, int strenght,int agility, int intelligence,int vitality);
-		Point getPosition();
+		Character(int positionX, int positionY, std::string name, int strenght,int agility, int intelligence,int vitality);
+		int getRow();
+		int getCol();
 		char getVisual();
 		std::string getName();
 		int getStrenght();
@@ -30,7 +32,8 @@ class Character
 		int getVitality();
 		int getHealth();
 		int getCurrentHealth();
-		void setPosition(Point newPos);
+		void setRow(int newX);
+		void setCol(int newY);
 		void setStrength(int strength);
 		void setAgility(int agility);
 		void setIntelligence(int intelligence);

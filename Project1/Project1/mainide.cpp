@@ -36,6 +36,7 @@ int main()
 		else if (GetAsyncKeyState(VK_NUMPAD6))
 		{
 		}
+		std::cin.ignore();
 	}
 
 	return 0;

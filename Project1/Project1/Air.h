@@ -8,7 +8,7 @@ class Air : public Item
 private:
 public:
 	Air(std::string name, std::string description, char visual = '.');
-	~Air();
+	virtual ~Air();
 };
 
 #endif // !AIR_H

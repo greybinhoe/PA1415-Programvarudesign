@@ -11,11 +11,13 @@ void Tile::randomItemGenerator()
 	else
 	{
 		this->contain = new Air("Air", "This is air");
+		//this->contain = new Wall("Wall", "This is a wall made of rock.");
 	}
 }
 
 Tile::Tile()
 {
+	this->randomItemGenerator();
 }
 
 Tile::Tile(bool containsWall)
@@ -26,12 +28,14 @@ Tile::Tile(bool containsWall)
 	}
 	else
 	{
-		this->randomItemGenerator();
+		this->contain = new Air("Air", "This is not oxygen");
+		//this->randomItemGenerator();
 	}
 }
 
 Tile::~Tile()
 {
+	//delete this->contain;
 }
 
 Item * Tile::takeItem()

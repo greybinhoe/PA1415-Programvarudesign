@@ -9,8 +9,9 @@
 class Map
 {
 private:
-	Tile ** tileMap;
-	Point size;
+	Tile tileMap[30][20];
+	int sizeX = 30;
+	int sizeY = 20;
 
 public:
 	Map();
@@ -19,7 +20,10 @@ public:
 	Item& pickUpItem(Point point);
 	bool checkPos(Point point);
 
-	string toString();
+	//string toString() const;
+	void toCharArray(char * charArray, int row);
+	int getRows() const;
+	int getCols() const;
 };
 
 #endif
