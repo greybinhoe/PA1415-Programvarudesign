@@ -22,16 +22,16 @@ class Character
 	public:
 		Character();
 		Character(int positionX, int positionY, std::string name, int strenght,int agility, int intelligence,int vitality);
-		int getRow();
-		int getCol();
-		char getVisual();
-		std::string getName();
-		int getStrenght();
-		int getAgility();
-		int getIntelligence();
-		int getVitality();
-		int getHealth();
-		int getCurrentHealth();
+		int getRow() const;
+		int getCol() const;
+		char getVisual() const;
+		std::string getName() const;
+		int getStrenght() const;
+		int getAgility() const;
+		int getIntelligence() const;
+		int getVitality() const;
+		int getHealth() const;
+		int getCurrentHealth() const;
 		void setPos (int row, int col);
 		void setStrength(int strength);
 		void setAgility(int agility);

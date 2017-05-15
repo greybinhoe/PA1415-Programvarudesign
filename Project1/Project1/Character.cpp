@@ -25,43 +25,43 @@ Character::Character(int posX, int posY, std::string name, int strenght, int agi
 	this->currentHealth = this->health;
 }
 
-int Character::getCol()
+int Character::getCol() const
 {
 	return this->col;
 }
-int Character::getRow()
+int Character::getRow() const
 {
 	return this->row;
 }
-char Character::getVisual()
+char Character::getVisual() const
 {
 	return this->visual;
 }
-std::string Character::getName()
+std::string Character::getName() const
 {
 	return this->name;
 }
-int Character::getStrenght()
+int Character::getStrenght() const
 {
 	return this->strength;
 }
-int Character::getAgility()
+int Character::getAgility() const
 {
 	return this->agility;
 }
-int Character::getIntelligence()
+int Character::getIntelligence() const
 {
 	return this->intelligence;
 }
-int Character::getVitality()
+int Character::getVitality() const
 {
 	return this->vitality;
 }
-int Character::getHealth()
+int Character::getHealth() const
 {
 	return this->health;
 }
-int Character::getCurrentHealth()
+int Character::getCurrentHealth() const
 {
 	return this->currentHealth;
 }

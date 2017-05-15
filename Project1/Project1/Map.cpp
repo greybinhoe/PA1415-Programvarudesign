@@ -23,15 +23,6 @@ Map::Map()
 
 Map::~Map()
 {
-	//Delete tiles
-	for (int i = 0; i < this->sizeX; i++)
-	{
-		for (int j = 0; j < this->sizeY; j++)
-		{
-			//delete this->tileMap[i];
-		}
-		//delete this->tileMap;
-	}
 }
 
 Item & Map::pickUpItem(int y, int x)
@@ -44,28 +35,11 @@ bool Map::checkPos(int y, int x)
 	return (this->tileMap[x][y].checkPos());
 }
 
-/*string Map::toString() const
-{
-	string mapVisual = "";
-
-	//Get Visual for every tile
-	for (int i = 0; i < this->sizeY; i++)
-	{
-		for (int j = 0; j < this->sizeX; j++)
-		{
-			mapVisual += this->tileMap[j][i].getVisual();
-		}
-		mapVisual += "\n";
-	}
-	return mapVisual;
-}*/
-
 void Map::rowToCharArray(char * charArray, int row)
 {
 	for (int j = 0; j < this->sizeX; j++)
 	{
 		charArray[j] = this->tileMap[j][row].getVisual();
-		//charArray[j + 1] = '\0';
 	}
 }
 

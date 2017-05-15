@@ -35,7 +35,6 @@ void log(char * str)
 	{
 		for (int j = 0; j < 64; j++)
 		{
-			//mvaddstr(26 + i, 0, "$$$$$$$$$$$$$$$$$$$$$$$$$$");
 			mvaddch(26 + i + 1, j, mvinch(26 + i, j));
 		}
 	}
@@ -65,12 +64,6 @@ void gameLoop(Map map, Character player, int ch)
 		return;
 	}
 
-	/*gameMap.add(player);
-	viewport.center(player);
-	viewport.refresh();
-	*/
-
-
 	drawMap(map);
 	mvaddch(player.getRow(), player.getCol(), player.getVisual());
 	refresh();
@@ -92,10 +85,6 @@ void gameLoop(Map map, Character player, int ch)
 				log("You walked into a wall, stupid.");
 			}
 			refresh();
-			/*
-			gameMap.add(player, player.getRow(), player.getCol() - 1);
-			viewport.center(player);
-			viewport.refresh();*/
 		}
 		else if (ch == KEY_RIGHT)
 		{
@@ -110,10 +99,6 @@ void gameLoop(Map map, Character player, int ch)
 				log("You walked into a wall, stupid.");
 			}
 			refresh();
-			/*
-			gameMap.add(player, player.getRow(), player.getCol() + 1);
-			viewport.center(player);
-			viewport.refresh();*/
 		}
 		else if (ch == KEY_UP)
 		{
@@ -128,10 +113,6 @@ void gameLoop(Map map, Character player, int ch)
 				log("You walked into a wall, stupid.");
 			}
 			refresh();
-			/*
-			gameMap.add(player, player.getRow() - 1, player.getCol());
-			viewport.center(player);
-			viewport.refresh();*/
 		}
 		else if (ch == KEY_DOWN)
 		{
@@ -146,10 +127,6 @@ void gameLoop(Map map, Character player, int ch)
 				log("You walked into a wall, stupid.");
 			}
 			refresh();
-			/*
-			gameMap.add(player, player.getRow() + 1, player.getCol());
-			viewport.center(player);
-			viewport.refresh();*/
 		}
 		else if (ch == 'e' || ch == 'E')
 		{
@@ -158,7 +135,6 @@ void gameLoop(Map map, Character player, int ch)
 			x += map.getItemDesc(player.getRow(), player.getCol());
 			char *y = new char[x.length() + 1];
 			std::strcpy(y, x.c_str());
-			//std::cout << x << std::endl;
 			log(y);
 			player.setItem(map.pickUpItem(player.getRow(), player.getCol()));
 			delete[] y;
@@ -172,10 +148,7 @@ void gameLoop(Map map, Character player, int ch)
 
 int main()
 {
-	// Initialize our objects
-
 	// Initialize ncurses
-	//Screen screen;
 	initCurses();
 
 	// Print a welcome message on screen
@@ -184,13 +157,9 @@ int main()
 	// Wait until the user press a key
 	int ch = getch();
 
-	//Frame gameMap(2 * screen.getHeight(), 2 * screen.getWidth(), 0, 0);
-
-	//Frame viewport(gameMap, screen.getHeight(), screen.getWidth(), 0, 0);
-
+	// Initialize our map and player
 	Map map;
 	Character player(20, 20, "UniHorn", 1, 10, 100, 10);
-	//Character player(gameMap.getHeight()/2, gameMap.getWidth()/2, "ninni", 10, 10, 10, 10);
 
 	// Clear the screen
 	clear();

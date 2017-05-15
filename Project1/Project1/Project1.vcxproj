@@ -121,8 +121,6 @@
     <ClInclude Include="Character.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Map.h" />
-    <ClInclude Include="Model.h" />
-    <ClInclude Include="point.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Wall.h" />
     <ClInclude Include="Weapon.h" />
@@ -132,7 +130,6 @@
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Map.cpp" />
-    <ClCompile Include="Model.cpp" />
     <ClCompile Include="pdcursemain.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Wall.cpp" />

@@ -20,7 +20,6 @@ public:
 	Item& pickUpItem(int y, int x);
 	bool checkPos(int y, int x);
 
-	//string toString() const;
 	void rowToCharArray(char * charArray, int row);
 	int getRows() const;
 	int getCols() const;
