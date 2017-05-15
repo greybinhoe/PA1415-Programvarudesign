@@ -9,21 +9,23 @@
 class Map
 {
 private:
-	Tile tileMap[30][20];
-	int sizeX = 30;
-	int sizeY = 20;
+	Tile tileMap[120][25];
+	int sizeX = 120;
+	int sizeY = 25;
 
 public:
 	Map();
 	~Map();
 
-	Item& pickUpItem(Point point);
-	bool checkPos(Point point);
+	Item& pickUpItem(int y, int x);
+	bool checkPos(int y, int x);
 
 	//string toString() const;
 	void rowToCharArray(char * charArray, int row);
 	int getRows() const;
 	int getCols() const;
+	std::string getItemDesc(int y, int x) const;
+	std::string getItemName(int y, int x) const;
 };
 
 #endif

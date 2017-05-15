@@ -66,14 +66,12 @@ int Character::getCurrentHealth()
 	return this->currentHealth;
 }
 
-void Character::setCol(int newCol)
+void Character::setPos(int row, int col)
 {
-	this->col = newCol;
+	this->row = row;
+	this->col = col;
 }
-void Character::setRow(int newRow)
-{
-	this->row = newRow;
-}
+
 void Character::setStrength(int strength)
 {
 	this->strength = strength;

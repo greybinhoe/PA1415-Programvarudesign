@@ -8,15 +8,17 @@ private:
 	std::string name;
 	std::string description;
 	char visual;
+	bool walkable;
 
 public:
 	Item();
-	Item(std::string name, std::string description, char visual);
+	Item(std::string name, std::string description, char visual, bool walkable);
 	virtual ~Item();
 
 	std::string getName()const;
 	char getVisual()const;
 	std::string getDescription()const;
+	bool getWalkable() const;
 
 	void setName(const std::string name);
 	void setVisual(const char visual);

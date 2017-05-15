@@ -20,8 +20,10 @@ public:
 	virtual ~Tile();
 
 	Item * takeItem();
-	bool checkPos()const;
+	bool checkPos();
 	char getVisual()const;
+	std::string getDescription() const;
+	std::string getName() const;
 	//tostring som returnerar visual
 };
 #endif // !TILE_H

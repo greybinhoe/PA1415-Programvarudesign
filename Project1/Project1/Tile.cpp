@@ -2,11 +2,10 @@
 
 void Tile::randomItemGenerator()
 {
-	srand((int)time(NULL));
-	unsigned int randomValue = rand() % 100 + 1;
+	unsigned int randomValue = rand() % 1000 + 1;
 	if (randomValue <= 5)
 	{
-		this->contain = new Weapon("Name: Unknown", "Description: Unknown", '/');
+		this->contain = new Weapon("Sword", "This is a sword crafted by the dwarves of BTH", '/');
 	}
 	else
 	{
@@ -28,8 +27,8 @@ Tile::Tile(bool containsWall)
 	}
 	else
 	{
-		this->contain = new Air("Air", "This is not oxygen");
-		//this->randomItemGenerator();
+		//this->contain = new Air("Air", "This is not oxygen");
+		this->randomItemGenerator();
 	}
 }
 
@@ -40,14 +39,16 @@ Tile::~Tile()
 
 Item * Tile::takeItem()
 {
-	return this->contain;
+	Item * returnValue = this->contain;
+	this->contain = new Air("Air", "This is air");
+	return returnValue;
 }
 
-bool Tile::checkPos() const
+bool Tile::checkPos()
 {
 	bool check = false;
 
-	if (this->contain->getName() != "Wall")
+	if (this->contain->getWalkable())
 	{
 		check = true;
 	}
@@ -58,4 +59,14 @@ bool Tile::checkPos() const
 char Tile::getVisual() const
 {
 	return this->contain->getVisual();
+}
+
+std::string Tile::getDescription() const
+{
+	return this->contain->getDescription();
+}
+
+std::string Tile::getName() const
+{
+	return this->contain->getName();
 }

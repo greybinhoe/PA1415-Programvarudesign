@@ -7,9 +7,6 @@ class Weapon : public Item //Subklass
 {
 private:
 	int damage;
-	//name
-	//description
-	//från basklassen.
 
 public:
 	Weapon(std::string name, std::string description, char visual = '/');

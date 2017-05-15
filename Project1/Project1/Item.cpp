@@ -7,11 +7,12 @@ Item::Item()
 	this->visual = ' ';
 }
 
-Item::Item(std::string name, std::string description, char visual)
+Item::Item(std::string name, std::string description, char visual, bool walkable)
 {
 	this->name = name;
 	this->description = description;
 	this->visual = visual;
+	this->walkable = walkable;
 }
 
 Item::~Item()
@@ -31,6 +32,11 @@ char Item::getVisual() const
 std::string Item::getDescription() const
 {
 	return this->description;
+}
+
+bool Item::getWalkable() const
+{
+	return this->walkable;
 }
 
 void Item::setName(const std::string name)

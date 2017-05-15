@@ -34,16 +34,14 @@ Map::~Map()
 	}
 }
 
-Item& Map::pickUpItem(Point point)
+Item & Map::pickUpItem(int y, int x)
 {
-	//Return the adress of the item on "point"
-	return *this->tileMap[sizeX][sizeY].takeItem();
+	return *this->tileMap[x][y].takeItem();
 }
 
-bool Map::checkPos(Point point)
+bool Map::checkPos(int y, int x)
 {
-	//If the tile "point" is empty, return true
-	return (this->tileMap[sizeX][sizeY].checkPos());
+	return (this->tileMap[x][y].checkPos());
 }
 
 /*string Map::toString() const
@@ -79,4 +77,14 @@ int Map::getRows() const
 int Map::getCols() const
 {
 	return this->sizeX;
+}
+
+std::string Map::getItemDesc(int y, int x) const
+{
+	return this->tileMap[x][y].getDescription();
+}
+
+std::string Map::getItemName(int y, int x) const
+{
+	return this->tileMap[x][y].getName();
 }

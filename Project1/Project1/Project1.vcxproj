@@ -77,6 +77,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(ProjectDir)include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>$(ProjectDir)lib\pdcurses.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -130,9 +131,6 @@
     <ClCompile Include="Air.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="Item.cpp" />
-    <ClCompile Include="mainide.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="pdcursemain.cpp" />

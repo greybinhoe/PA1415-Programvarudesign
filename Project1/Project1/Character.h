@@ -32,8 +32,7 @@ class Character
 		int getVitality();
 		int getHealth();
 		int getCurrentHealth();
-		void setRow(int newX);
-		void setCol(int newY);
+		void setPos (int row, int col);
 		void setStrength(int strength);
 		void setAgility(int agility);
 		void setIntelligence(int intelligence);

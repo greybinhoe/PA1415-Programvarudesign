@@ -1,31 +1,51 @@
-#include "curses.h"
+#include "include\curses.h"
+#include "include\panel.h"
+#include "Screen.h"
+#include "Frame.h"
 #include "Map.h"
 #include "Character.h"
 
 void initCurses()
 {
-	//initscr();                    /* Start curses mode */
-	//printw("Hello World !!!");    /* Print Hello World */
-	//refresh();                    /* Print it on to the real screen */
-	//getch();                      /* Wait for user input */
-	//endwin();                     /* End curses mode */
-
 	initscr();
 	clear();
 	noecho();
 	cbreak();
 	keypad(stdscr, TRUE);
 	curs_set(0);
+
+	//Seed randomness
+	srand((unsigned)time(NULL));
+
+	//initscr();                    /* Start curses mode */
+	//printw("Hello World !!!");    /* Print Hello World */
+	//refresh();                    /* Print it on to the real screen */
+	//getch();                      /* Wait for user input */
+	//endwin();                     /* End curses mode */
 }
 
-void erase(int y, int x)
+void log(char * str)
 {
-	mvaddch(y, x, '$');
+	int index = 0;
+	while (str[index] != '\0')
+	{
+		index++;
+	}
+	for (int i = 3; i >= 0; i--)
+	{
+		for (int j = 0; j < 64; j++)
+		{
+			//mvaddstr(26 + i, 0, "$$$$$$$$$$$$$$$$$$$$$$$$$$");
+			mvaddch(26 + i + 1, j, mvinch(26 + i, j));
+		}
+	}
+	mvaddstr(26, 0, str);
+	mvaddstr(26, index, "                                                               ");
 }
 
 void drawMap(Map map)
 {
-	char bigCHARRAY[124][124];
+	char bigCHARRAY[25][120];
 	for (int i = 0; i < map.getRows(); i++)
 	{
 		map.rowToCharArray(bigCHARRAY[i], i);
@@ -34,66 +54,129 @@ void drawMap(Map map)
 	{
 		mvaddstr(i, 0, bigCHARRAY[i]);
 	}
+	mvaddstr(25, 0, "INFO LOG:                   ");
 }
 
-void gameLoop(Character player, Map map, int ch)
+void gameLoop(Map map, Character player, int ch)
 {
+	// Check if user wishes to quit
+	if (ch == 'q' || ch == 'Q')
+	{
+		return;
+	}
+
+	/*gameMap.add(player);
+	viewport.center(player);
+	viewport.refresh();
+	*/
+
+
+	drawMap(map);
+	mvaddch(player.getRow(), player.getCol(), player.getVisual());
+	refresh();
+
 	while (1)
 	{
-		if (ch == 'q' || ch == 'Q')
-		{
-			return;	
-		}
-		drawMap(map);
-		mvaddch(player.getRow(), player.getCol(), player.getVisual());
-		refresh();
+		ch = getch();
 
-		for (;;)
+		if (ch == KEY_LEFT)
 		{
-			ch = getch();
-			
-			if (ch == KEY_LEFT)
+			if (map.checkPos(player.getRow(), player.getCol() - 1))
 			{
-				player.setCol(player.getCol() - 1);
 				drawMap(map);
+				player.setPos(player.getRow(), player.getCol() - 1);
 				mvaddch(player.getRow(), player.getCol(), player.getVisual());
-				refresh();
 			}
-			else if (ch == KEY_RIGHT)
+			else
 			{
-				player.setCol(player.getCol() + 1);
-				drawMap(map);
-				mvaddch(player.getRow(), player.getCol(), player.getVisual());
-				refresh();
+				log("You walked into a wall, stupid.");
 			}
-			else if (ch == KEY_UP)
+			refresh();
+			/*
+			gameMap.add(player, player.getRow(), player.getCol() - 1);
+			viewport.center(player);
+			viewport.refresh();*/
+		}
+		else if (ch == KEY_RIGHT)
+		{
+			if (map.checkPos(player.getRow(), player.getCol() + 1))
 			{
-				player.setRow(player.getRow() - 1);
 				drawMap(map);
+				player.setPos(player.getRow(), player.getCol() + 1);
 				mvaddch(player.getRow(), player.getCol(), player.getVisual());
-				refresh();
 			}
-			else if (ch == KEY_DOWN)
+			else
 			{
-				player.setRow(player.getRow() + 1);
-				drawMap(map);
-				mvaddch(player.getRow(), player.getCol(), player.getVisual());
-				refresh();
+				log("You walked into a wall, stupid.");
 			}
+			refresh();
+			/*
+			gameMap.add(player, player.getRow(), player.getCol() + 1);
+			viewport.center(player);
+			viewport.refresh();*/
+		}
+		else if (ch == KEY_UP)
+		{
+			if (map.checkPos(player.getRow() - 1, player.getCol()))
+			{
+				drawMap(map);
+				player.setPos(player.getRow() - 1, player.getCol());
+				mvaddch(player.getRow(), player.getCol(), player.getVisual());
+			}
+			else
+			{
+				log("You walked into a wall, stupid.");
+			}
+			refresh();
+			/*
+			gameMap.add(player, player.getRow() - 1, player.getCol());
+			viewport.center(player);
+			viewport.refresh();*/
+		}
+		else if (ch == KEY_DOWN)
+		{
+			if (map.checkPos(player.getRow() + 1, player.getCol()))
+			{
+				drawMap(map);
+				player.setPos(player.getRow() + 1, player.getCol());
+				mvaddch(player.getRow(), player.getCol(), player.getVisual());
+			}
+			else
+			{
+				log("You walked into a wall, stupid.");
+			}
+			refresh();
+			/*
+			gameMap.add(player, player.getRow() + 1, player.getCol());
+			viewport.center(player);
+			viewport.refresh();*/
+		}
+		else if (ch == 'e' || ch == 'E')
+		{
+			std::string x = map.getItemName(player.getRow(), player.getCol());
+			x += ": ";
+			x += map.getItemDesc(player.getRow(), player.getCol());
+			char *y = new char[x.length() + 1];
+			std::strcpy(y, x.c_str());
+			//std::cout << x << std::endl;
+			log(y);
+			player.setItem(map.pickUpItem(player.getRow(), player.getCol()));
+			delete[] y;
+		}
+		else if (ch == 'q' || ch == 'Q')
+		{
+			break;
 		}
 	}
 }
 
-
 int main()
 {
 	// Initialize our objects
-	Map map;
-	Character player(10, 10, "ninni", 10, 10, 10, 10);
 
 	// Initialize ncurses
+	//Screen screen;
 	initCurses();
-	
 
 	// Print a welcome message on screen
 	printw("Team Unicorn presents UNICORNHACK! The game!\nPress any key to start.\nIf you want to quit press \"q\" or \"Q\"");
@@ -101,10 +184,20 @@ int main()
 	// Wait until the user press a key
 	int ch = getch();
 
+	//Frame gameMap(2 * screen.getHeight(), 2 * screen.getWidth(), 0, 0);
+
+	//Frame viewport(gameMap, screen.getHeight(), screen.getWidth(), 0, 0);
+
+	Map map;
+	Character player(20, 20, "UniHorn", 1, 10, 100, 10);
+	//Character player(gameMap.getHeight()/2, gameMap.getWidth()/2, "ninni", 10, 10, 10, 10);
+
 	// Clear the screen
 	clear();
+	drawMap(map);
 
 	// Start the game loop
-	gameLoop(player, map, ch);
+	gameLoop(map, player, ch);
+
 	return 0;
 }
